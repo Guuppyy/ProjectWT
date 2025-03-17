@@ -19,3 +19,6 @@ storage/framework/views/
 # Игнорируем загруженные файлы и кеш
 /public/uploads/
 public/storage/
+
+
+/.idea/
