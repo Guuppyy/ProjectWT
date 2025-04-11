@@ -1,0 +1,5 @@
+AuthType Basic
+AuthName "Restricted Area"
+AuthUserFile "D:/WebData/WebTech/admin/.htpasswd"
+Require valid-user
+
