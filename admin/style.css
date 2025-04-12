@@ -1,7 +1,7 @@
 :root {
-    --background-color: #f0f0f5; /* Нежный светлый фон */
-    --main-color: #4a154e;       /* Темный цвет для контента */
-    --accent-color: #e68bbe;     /* Яркий акцент для кнопок */
+    --background-color: #f0f0f5;
+    --main-color: #4a154e;
+    --accent-color: #e68bbe;
     --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --font-size: 16px;
     --spacing: 1rem;
@@ -36,21 +36,21 @@ main {
     overflow-y: auto;
 }
 
-.hero {
+.navigation {
     background: var(--accent-color);
-    padding: 30px;
+    padding: 20px;
     text-align: center;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     margin-bottom: 2rem;
 }
 
-.hero h2 {
+.navigation h2 {
     margin: 0;
     color: white;
 }
 
-.hero .btn {
+.navigation .btn {
     display: inline-block;
     margin-top: 10px;
     padding: 12px 20px;
@@ -62,15 +62,15 @@ main {
     transition: background 0.3s ease;
 }
 
-.hero .btn:hover {
+.navigation .btn:hover {
     background: var(--accent-color);
 }
 
-.Movies {
+.file-list-section {
     padding: 20px 0;
 }
 
-.Movie-list {
+.file-items-list {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -79,7 +79,7 @@ main {
     margin: 0;
 }
 
-.Movie {
+.file-item {
     background: white;
     padding: 20px;
     border-radius: 10px;
@@ -87,22 +87,22 @@ main {
     transition: transform 0.3s ease;
 }
 
-.Movie:hover {
+.file-item:hover {
     transform: scale(1.03);
 }
 
-.Movie a {
+.file-item a {
     color: var(--accent-color);
     text-decoration: none;
     font-weight: bold;
     margin-left: 5px;
 }
 
-.Movie a:hover {
+.file-item a:hover {
     color: var(--main-color);
 }
 
-.about {
+.upload-section {
     padding: 20px;
     background: var(--main-color);
     border-radius: 10px;
@@ -111,7 +111,7 @@ main {
     margin-top: 2rem;
 }
 
-.about form {
+.upload-section form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -139,7 +139,7 @@ input[type="file"]::file-selector-button:hover {
     background: var(--main-color);
 }
 
-.about .btn,
+.upload-section .btn,
 button.btn {
     display: inline-block;
     padding: 10px 20px;
@@ -153,7 +153,7 @@ button.btn {
     cursor: pointer;
 }
 
-.about .btn:hover,
+.upload-section .btn:hover,
 button.btn:hover {
     background: var(--main-color);
 }
