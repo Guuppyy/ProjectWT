@@ -1,24 +1,66 @@
-# Игнорируем системные файлы
- /.idea/                  # Настройки PHPStorm
- /.vscode/                # Настройки VS Code
- /.DS_Store               # MacOS
+# ======================
+# Системные файлы
+# ======================
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+._*
 
- # Игнорируем временные файлы
- /vendor/                 # Composer-пакеты (устанавливаются вручную)
- /node_modules/           # NPM-пакеты
- /.env                    # Файл с паролями и API-ключами
- /.env.local
- /.env.*.local
- /.cache/
- *.log                    # Лог-файлы
- /storage/logs/
- storage/framework/cache/
- storage/framework/sessions/
- storage/framework/views/
+# ======================
+# IDE и редакторы
+# ======================
+.idea/
+.vscode/
+*.code-workspace
 
- # Игнорируем загруженные файлы и кеш
- /public/uploads/
- public/storage/
+# ======================
+# Логи и временные файлы
+# ======================
+*.log
+*.tmp
+*.temp
+*.cache
 
+# ======================
+# Зависимости
+# ======================
+/node_modules/
+/vendor/
+/composer.lock
+package-lock.json
+yarn.lock
 
- /.idea/
+# ======================
+# Скомпилированные/обработанные файлы
+# ======================
+/dist/
+/build/
+*.min.js
+*.min.css
+*.optimized.*
+
+# ======================
+# Файлы окружения
+# ======================
+.env
+.env.*
+config.local.php
+# Игнорируем файлы, содержащие "password"
+*password*
+*passwd*
+# Игнорируем файл .htpasswd
+.htpasswd
+
+# ======================
+# Пользовательские загрузки
+# ======================
+/uploads/
+/import/
+!/uploads/.gitkeep  # Сохраняет пустую папку
+
+# ======================
+# Автогенерируемые файлы
+# ======================
+/sitemap.xml
+/robots.txt

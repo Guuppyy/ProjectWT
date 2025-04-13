@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>КИНО</title>
+    <link rel="stylesheet" href="/project/public/css/styles.css">
+
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#movies">Фильмы</a></li>
+            <li><a href="#contact">Соц-сети</a></li>
+        </ul>
+    </nav>
+    <h1>КИНО</h1>
+    <p>Фильмы для каждого!</p>
+</header>
+
+<section id="about">
+    <h2>О нас</h2>
+    <p>Не знаете, что посмотреть? Добро пожаловать на наш кино-сайт, где каждый любитель фильмов найдет что-то для себя! Наш ресурс предлагает обширную библиотеку фильмов.</p>
+</section>
+
+
+
+<section id="movies">
+    <h2>Свежие фильмы</h2>
+    <div class="cards">
+
+        {% foreach $movies as $movie %}
+        <div class="card">
+            <img src="{{ $movie['image'] }}" alt="{{ $movie['name'] }}" class="image">
+            <h3>Название: {{ $movie['name'] }} </h3>
+            <p>Год выпуска: {{ $movie['year'] }}</p>
+            <p>Жанр: {{ $movie['type'] }}</p>
+            <p>Описание: {{ $movie['description'] }}</p>
+        </div>
+        {% endforeach %}
+
+    </div>
+</section>
+
+
+
+<section id="contact">
+    <h2>Наши соц-сети</h2>
+    <p>Инстаграмм: <a href="@MovieTime">info@newlife-shelter.org</a></p>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <p>КИНО - смотрите у нас!</p>
+
+    </div>
+</footer>
+</body>
+</html>

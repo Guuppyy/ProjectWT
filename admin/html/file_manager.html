@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Manager</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 30px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    .breadcrumb {
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .breadcrumb a {
+      text-decoration: none;
+      color: #3498db;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    input[type="text"], input[type="file"] {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      flex: 1;
+    }
+
+    button {
+      padding: 8px 16px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background-color: #f0f0f0;
+      font-weight: bold;
+    }
+
+    tr:hover {
+      background-color: #f9f9f9;
+    }
+
+    td a {
+      color: #3498db;
+      text-decoration: none;
+    }
+
+    td a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<h1>File Manager</h1>
+
+<div class="breadcrumb">
+  <a href="{{ $basePath }}/admin">Root</a>
+  {% foreach $breadcrumbs as $crumb %}
+  &raquo; <a href="{{ $basePath }}/admin?path={{ $crumb['path'] }}">{{ $crumb['name'] }}</a>
+  {% endforeach %}
+</div>
+
+<div class="actions">
+  <form action="{{ $basePath }}/admin/create-dir" method="post" class="form-group">
+    <input type="hidden" name="currentDir" value="{{ $currentDir }}">
+    <input type="text" name="dirName" placeholder="New directory name" required>
+    <button type="submit">Create Directory</button>
+  </form>
+
+  <form action="{{ $basePath }}/admin/upload" method="post" enctype="multipart/form-data" class="form-group">
+    <input type="hidden" name="currentDir" value="{{ $currentDir }}">
+    <input type="file" name="file" required>
+    <button type="submit">Upload File</button>
+  </form>
+</div>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Size</th>
+    <th>Modified</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  {% foreach $items as $item %}
+  <tr>
+    <td>
+      {% if $item['is_dir'] %}
+      <a href="{{ $basePath }}/admin?path={{ $currentDir }}/{{ $item['name'] }}">
+        {{ $item['name'] }}
+      </a>
+      {% else %}
+      {{ $item['name'] }}
+      {% endif %}
+    </td>
+    <td>{% if $item['is_dir'] %}Directory{% else %}File{% endif %}</td>
+    <td>{{ $item['size'] }}</td>
+    <td>{{ $item['modified'] }}</td>
+    <td>
+      {% if $item['is_dir'] %}
+      <a href="{{ $basePath }}/admin/delete-dir?currentDir={{ $currentDir }}&dirName={{ $item['name'] }}"
+         onclick="return confirm('Delete this directory?')">Delete</a>
+      {% else %}
+      <a href="{{ $basePath }}/admin/delete-file?currentDir={{ $currentDir }}&fileName={{ $item['name'] }}"
+         onclick="return confirm('Delete this file?')">Delete</a>
+      {% endif %}
+    </td>
+  </tr>
+  {% endforeach %}
+  </tbody>
+</table>
+</body>
+</html>

@@ -1,5 +1,7 @@
+# Настройка базовой аутентификации
 AuthType Basic
 AuthName "Restricted Area"
-AuthUserFile "D:/WebData/WebTech/admin/.htpasswd"
+# (Following line optional)
+AuthBasicProvider file
+AuthUserFile "D:/WebData/project/admin/.htpasswd"
 Require valid-user
-
