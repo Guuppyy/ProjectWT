@@ -2,18 +2,18 @@
 namespace project\app\Controllers;
 
 use project\services\AdminService;
-use project\template\MyTemplate;
+use project\template\ThisTemplate;
 
 class AdminController
 {
     private AdminService $adminService;
-    private MyTemplate $template;
+    private ThisTemplate $template;
     private const BASE_PATH = '/project';
 
     public function __construct()
     {
         $this->adminService = new AdminService(__DIR__.'/../../public');
-        $this->template = new MyTemplate();
+        $this->template = new ThisTemplate();
     }
 
     public function index(): void

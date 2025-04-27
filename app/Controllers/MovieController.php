@@ -2,24 +2,24 @@
 
 namespace project\app\Controllers;
 use project\services\MovieService;
-use project\template\MyTemplate;
+use project\template\ThisTemplate;
 
 class MovieController
 {
     private MovieService $movieService;
 
-    private MyTemplate $myTemplate;
+    private ThisTemplate $thisTemplate;
 
     public function __construct()
     {
         $this->movieService = new MovieService();
 
-        $this->myTemplate = new MyTemplate();
+        $this->thisTemplate = new ThisTemplate();
     }
 
     public function showMovies(): void
     {
-        echo $this->myTemplate->view(
+        echo $this->thisTemplate->view(
             'D:\WebData\project\public\html\home.html',
             $this->movieService->showMovies()
         );

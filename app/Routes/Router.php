@@ -3,13 +3,12 @@
 namespace project\app\Routes;
 
 use project\app\Controllers\MovieController;
-use project\app\Routes\AdminRouter;
+
 
 class Router
 {
     private array $controllers = [
         ''         => [MovieController::class, 'showMovies'],
-        'adoption' => [MovieController::class, 'handleAdoption'],
     ];
 
     private AdminRouter $adminRouter;
@@ -31,6 +30,11 @@ class Router
 
         $path = explode('/', trim(parse_url($trimmedUri, PHP_URL_PATH), '/'));
         $route = $path[0] ?? '';
+
+//        // Проверяем, является ли запрос статическим файлом
+//        if (preg_match('/\.(jpg|jpeg|png|gif|css|js|svg)$/i', $requestUri)) {
+//            return; // Пропускаем обработку
+//        }
 
         if ($route === 'admin') {
             $adminPath = '/' . implode('/', array_slice($path, 1));

@@ -4,7 +4,6 @@ namespace project\database;
 
 class EntityManager
 {
-    private $connection;
     private string $server;
     private string $user;
     private string $pass;
